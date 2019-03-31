@@ -12,7 +12,7 @@ def temperature():
     r = requests.get('http://api.openweathermap.org/data/2.5/weather?zip='+zipcode+',us&appid=1af450c83bdfb13224d180e044b78ce6')
     json_object = r.json()
     temp_k = float(json_object['main']['temp'])
-    temp_f = (temp_k - 273.15) * 1.8 + 32
+    temp_f = round(((temp_k - 273.15) * 1.8 + 32),2)
     return render_template('temperature.html', temp=temp_f)
 
 @app.route('/')
